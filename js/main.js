@@ -10,6 +10,10 @@ let shuffledQuestions, currentQuestionIndex;
 const alertWrapper = document.querySelector('.alert-wrapper');
 const alertText = document.querySelector('.alert-text');
 
+// counter elements
+const currentCount = document.querySelector('.current-count');
+const totalCount = document.querySelector('.total-count');
+
 // events
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
@@ -24,12 +28,16 @@ function startGame() {
     shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
     setNextQuestion();
+    // show question counter
+    currentCount.parentElement.classList.add('show-question-counter');
 }
 
 // set next qusestion
 function setNextQuestion() {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
+
+    currentCount.innerHTML = currentQuestionIndex + 1
 }
 
 
