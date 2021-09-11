@@ -31,3 +31,81 @@ body.wrong {
     --hue: var(--wrong-color);
     background: hsl(var(--hue), 100%, 30%);
 }
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quize-wrapper {
+    width: 40%;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.quize .answer-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+    padding: 1.4rem 0;
+}
+
+.btn {
+    --hue: var(--nautral-color);
+    padding: .5rem 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: hsl(var(--hue), 100%, 50%);
+    border: 2px solid hsl(var(--hue), 100%, 35%);
+    color: #fff;
+    border-radius: 20px;
+}
+
+
+/* correct button */
+
+.btn.correct {
+    --hue: var(--correct-color);
+    color: #000;
+}
+
+
+/* wrong button */
+
+.btn.wrong {
+    --hue: var(--wrong-color);
+}
+
+.btn:hover {
+    background-color: hsl(var(--hue), 100%, 46%);
+    border-color: hsl(var(--hue), 100%, 33%);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .7rem;
+}
+
+.controls .btn {
+    background-color: hsl(var(--hue), 100%, 40%);
+    padding: .5rem 2rem;
+}
+
+.controls .btn:hover {
+    background-color: hsl(var(--hue), 100%, 35%);
+    border-color: hsl(var(--hue), 100%, 23%);
+}
+
+
+/* hide elements */
+
+.hide {
+    display: none;
+}
