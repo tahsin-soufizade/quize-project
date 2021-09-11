@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --nautral-color: 200;
+    --correct-color: 145;
+    --wrong-color: 0;
+}
+
+body {
+    /* set default background */
+    --hue: var(--nautral-color);
+    background: hsl(var(--hue), 100%, 30%);
+}
+
+
+/* set correct background */
+
+body.correct {
+    --hue: var(--correct-color);
+    background: hsl(var(--hue), 100%, 30%);
+}
+
+
+/* set wrong background */
+
+body.wrong {
+    --hue: var(--wrong-color);
+    background: hsl(var(--hue), 100%, 30%);
+}
