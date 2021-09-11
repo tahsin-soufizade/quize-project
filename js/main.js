@@ -6,6 +6,10 @@ const answerButtons = document.querySelector('.answer-buttons');
 
 let shuffledQuestions, currentQuestionIndex;
 
+// alert elements
+const alertWrapper = document.querySelector('.alert-wrapper');
+const alertText = document.querySelector('.alert-text');
+
 // events
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
@@ -64,6 +68,13 @@ function selectAnswer(e) {
     });
     // set color status to body
     setStatusClass(document.body, selectedButton.dataset.correct);
+
+    // check answer and show alert message
+    if (selectedButton.dataset.correct) {
+        displayAlert('right 😃', 'correct');
+    } else {
+        displayAlert('😐😐😐', 'wrong');
+    }
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide')
     } else {
@@ -86,6 +97,10 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
+    // set back to default alert wrapper
+    alertWrapper.style.height = 0;
+    alertWrapper.classList.remove('correct');
+    alertWrapper.classList.remove('wrong');
 }
 
 // remove old answers
@@ -95,6 +110,21 @@ function resetState() {
         answerButtons.removeChild(answerButtons.firstChild);
     }
     nextButton.classList.add('hide')
+}
+
+// display alert message
+function displayAlert(text, action) {
+    const alertHeight = alertText.getBoundingClientRect().height;
+    alertWrapper.style.height = `${alertHeight}px`;
+
+    alertWrapper.classList.add(action);
+    alertText.innerHTML = text;
+
+    // hide alert message automaticly
+    setTimeout(() => {
+        alertWrapper.classList.remove(action);
+        alertWrapper.style.height = 0;
+    }, 2000);
 }
 
 
